@@ -1,0 +1,7 @@
+__pycache__
+dataset
+ckpt*
+runs
+.vscode
+*.pth
+run.sh
