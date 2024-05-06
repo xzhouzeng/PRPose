@@ -1,4 +1,4 @@
-# Efficient 3D Human Pose Estimation with Adaptive Noise Sampling via Weakly Supervised Learning
+# Probablistic Restoration with Adaptive Noise Sampling for 3D Human Pose Estimation
 
 ## Introduction
 
@@ -8,7 +8,7 @@ a) **Weakly Supervised Adaptive Noise Learning Module(WS-ANL):** completes weakl
 
 b) **Single-Hypothesis Human Pose Estimation Module (SH-HPE):** superimpose adaptive noise to the original 2D pose to generate multiple 2D hypotheses; map a single 2D pose to a 3D pose by an SH-HPE model (such as HTNet).
 
-<img src="picture/2023-05-09-16-25-08-image.png" title="" alt="" data-align="center">
+<img title="" src="picture\PRPose_arch.png" alt="PRPose_arch.png" data-align="center">
 
 ## Installation
 
@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 ## Dataset setup
 
-Please download the dataset from [Human3.6M](http://vision.imar.ro/human3.6m/) and refer to [VideoPose3D](https://github.com/facebookresearch/VideoPose3D) to set up the Human3.6M dataset ('./dataset' directory). The 2D pose in the [MPI-INF-3DHP](https://vcai.mpi-inf.mpg.de/3dhp-dataset/) dataset was extracted using YOLOv3 and HRNet and you can download the processed data from [~~here~~](anonymous).
+Please download the dataset from [Human3.6M](http://vision.imar.ro/human3.6m/) and refer to [VideoPose3D](https://github.com/facebookresearch/VideoPose3D) to set up the Human3.6M dataset ('./dataset' directory). The 2D pose in the [MPI-INF-3DHP](https://vcai.mpi-inf.mpg.de/3dhp-dataset/) dataset was extracted using YOLOv3 and HRNet.
 
 ```
 ${POSE_ROOT}/
@@ -35,7 +35,7 @@ ${POSE_ROOT}/
 
 ## Evaluation
 
-The pre-trained models can be downloaded from [~~Google Drive~~](anonymous). Put `ckpt` in the project root directory.
+The pre-trained models can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1Klfg9bXTiHbz-Lv3O5TWvVXN4Gocj68c?usp=drive_link). Put `ckpt` in the project root directory.
 
 ```
 # Human3.6M
@@ -45,7 +45,7 @@ python main.py --shhpe_model "htnet" --sample_nums 200 --mutilhyp_test
 python main.py  --shhpe_model "htnet" --sample_nums 200 --mutilhyp_test --dataset '3dhp' -k 'hrnet_coco'
 ```
 
-## Training
+## Train the model
 
 To train AVG model on Human3.6M:
 
@@ -58,7 +58,14 @@ python main.py --shhpe_model "htnet"  --train
 If you find our work useful in your research, please consider citing:
 
 ```
-
+@misc{zeng2024probablistic,
+      title={Probablistic Restoration with Adaptive Noise Sampling for 3D Human Pose Estimation}, 
+      author={Xianzhou Zeng and Hao Qin and Ming Kong and Luyuan Chen and Qiang Zhu},
+      year={2024},
+      eprint={2405.02114},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 ```
 
 ## Acknowledgement
@@ -69,5 +76,3 @@ Our code is extended from the following repositories. We thank the authors for r
 - [GraphMLP](https://github.com/Vegetebird/GraphMLP)
 - [Modulated-GCN](https://github.com/ZhimingZo/Modulated-GCN)
 - [HTNet](https://github.com/vefalun/HTNet)
-
-
